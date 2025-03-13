@@ -11,6 +11,7 @@ import { Wip } from './Wip';
 import { wips } from './wips';
 import now from '../../assets/now.png';
 import then from '../../assets/then.png';
+import { MyLinks } from './MyLinks';
 
 export const About = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,6 +48,7 @@ export const About = () => {
             return <Wip key={wip.title} wip={wip} />;
           })}
         </WorkInProgress>
+        <MyLinks />
       </AboutContent>
     </Section>
   );

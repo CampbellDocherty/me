@@ -96,6 +96,8 @@ export const Content = styled.div<{ $isOpen: boolean }>`
 `;
 
 export const AboutContent = styled.div<{ $isOpen: boolean }>`
+  display: flex;
+  flex-direction: column;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   transform: ${({ $isOpen }) =>
     $isOpen ? 'translateY(0)' : 'translateY(-10px)'};
@@ -103,6 +105,7 @@ export const AboutContent = styled.div<{ $isOpen: boolean }>`
     opacity 0.5s ease,
     transform 0.5s ease;
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+  height: 100%;
 `;
 
 export const Icon = styled.p<{ $isOpen: boolean }>`
