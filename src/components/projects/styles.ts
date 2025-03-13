@@ -7,9 +7,9 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Drawer = styled.div`
+export const Drawer = styled.div<{ $isOpen: boolean }>`
   height: 100%;
-  flex: 1;
+  flex: ${(props) => (props.$isOpen ? 10 : 1)};
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -19,19 +19,29 @@ export const Drawer = styled.div`
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
-  &:hover {
-    background-color: white;
-    color: black;
-  }
-
+  &:hover,
   &:focus {
     background-color: white;
     color: black;
     outline: none;
   }
+
+  ${(props) =>
+    props.$isOpen &&
+    css`
+      &:hover,
+      &:focus {
+        background-color: black;
+        color: white;
+        outline: none;
+      }
+    `}
 `;
 
-export const ProjectTitle = styled.p`
+export const ProjectTitle = styled.p<{
+  $isOpen: boolean;
+  $oneLetter: boolean | null;
+}>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,6 +49,28 @@ export const ProjectTitle = styled.p`
   font-size: 1.5rem;
   cursor: default;
   z-index: 1;
+  position: absolute;
+  transition: all 0.3s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  ${(props) =>
+    props.$isOpen &&
+    css`
+      top: 50%;
+      left: 5%;
+      transform: translate(0%, -50%);
+    `}
+
+  ${(props) =>
+    props.$oneLetter &&
+    css`
+      text-align: start;
+      top: 10px;
+      left: 50%;
+      transform: translate(-50%, -5px);
+    `}
 
   &::selection {
     background-color: transparent;
@@ -52,15 +84,27 @@ export const Letter = styled.span<{ $letterInName: boolean }>`
     props.$letterInName &&
     css`
       opacity: 1;
-      color:;
+      font-weight: 800;
     `};
 `;
 
-export const SVGOverlay = styled.svg`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+export const ProjectContent = styled.div<{ $isOpen: boolean }>`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  transform: ${({ $isOpen }) =>
+    $isOpen ? 'translateY(0)' : 'translateY(-10px)'};
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
   height: 100%;
-  pointer-events: none;
+`;
+
+export const SketchPlaceholder = styled.div`
+  width: 100%;
+  height: 80%;
+  border: 1px solid red;
 `;
