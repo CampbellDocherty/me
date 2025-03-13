@@ -22,6 +22,9 @@ export const Project = ({
   const seen = new Set();
 
   useEffect(() => {
+    if (!openProject && isOpen) {
+      setIsOpen(false);
+    }
     if (openProject) {
       if (openProject.id !== project.id && isOpen) {
         setIsOpen(false);

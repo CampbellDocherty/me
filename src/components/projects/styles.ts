@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Drawer = styled.div<{ $isOpen: boolean }>`
   height: 100%;
-  flex: ${(props) => (props.$isOpen ? 10 : 1)};
+  flex: ${(props) => (props.$isOpen ? 20 : 1)};
   box-sizing: border-box;
   display: flex;
   align-items: center;

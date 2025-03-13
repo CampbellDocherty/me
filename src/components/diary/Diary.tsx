@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { keyframes, styled } from 'styled-components';
+import { Sections } from '../../App';
 
 const Drawer = styled.div<{ $isOpen: boolean }>`
   height: 100%;
@@ -51,10 +52,33 @@ const Icon = styled.p<{ $isOpen: boolean }>`
   transform: ${(props) => (props.$isOpen ? 'rotate(45deg)' : 'rotate(0)')};
 `;
 
-export const Diary = () => {
+export const Diary = ({
+  onOpen,
+  openSection,
+}: {
+  openSection: Sections | null;
+  onOpen: (section: Sections | null) => void;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (openSection) {
+      if (openSection !== Sections.DIARY) {
+        setIsOpen(false);
+      }
+    }
+  }, [openSection]);
+
+  const handleOpen = () => {
+    const newState = !isOpen;
+    if (newState && openSection !== Sections.DIARY) {
+      onOpen(Sections.DIARY);
+    }
+    setIsOpen(newState);
+  };
+
   return (
-    <Drawer $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+    <Drawer $isOpen={isOpen} onClick={handleOpen}>
       {isOpen && <Title>Diary</Title>}
       <Icon $isOpen={isOpen}>+</Icon>
     </Drawer>
