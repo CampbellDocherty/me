@@ -33,9 +33,12 @@ export const Project = ({
   }, [titleRef, project.id, width, height]);
 
   return (
-    <Drawer $backgroundColor={project.backgroundColour}>
+    <Drawer>
       <ProjectTitle ref={titleRef}>
         {project.title.split('').map((l, i) => {
+          if (l === ' ') {
+            return <br key={i} />;
+          }
           return <span key={i}>{l}</span>;
         })}
       </ProjectTitle>

@@ -7,14 +7,27 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Drawer = styled.div<{ $backgroundColor: string }>`
+export const Drawer = styled.div`
   height: 100%;
   width: 10%;
-  background-color: ${({ $backgroundColor }) => $backgroundColor};
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  border: 1px solid white;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  &:focus {
+    background-color: white;
+    color: black;
+    outline: none;
+  }
 `;
 
 export const ProjectTitle = styled.p`
@@ -22,8 +35,9 @@ export const ProjectTitle = styled.p`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 2rem;
   cursor: default;
+  z-index: 1;
 
   &::selection {
     background-color: transparent;
@@ -37,4 +51,5 @@ export const SVGOverlay = styled.svg`
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 0;
 `;

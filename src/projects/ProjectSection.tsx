@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Coords } from './types';
-import { Container, SVGOverlay } from './styles';
+import { Container, Drawer, SVGOverlay } from './styles';
 import { Project } from './Project';
 import { projects } from './projects';
 
@@ -20,18 +20,18 @@ export const ProjectSection = () => {
         {Object.entries(positions).map(([id, { x, y }], index, arr) =>
           index < arr.length - 1 ? (
             <g key={id}>
-              <circle cx={x} cy={y} r="5" fill="black" />
+              <circle cx={x} cy={y} r="5" fill="red" />
               <line
                 x1={x}
                 y1={y}
                 x2={arr[index + 1][1].x}
                 y2={arr[index + 1][1].y}
-                stroke="black"
+                stroke="red"
                 strokeWidth="2"
               />
             </g>
           ) : (
-            <circle key={id} cx={x} cy={y} r="5" fill="black" />
+            <circle key={id} cx={x} cy={y} r="5" fill="red" />
           ),
         )}
       </SVGOverlay>

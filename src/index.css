@@ -2,7 +2,13 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+@font-face {
+  font-family: 'Mono';
+  src: url('fonts/mono.ttf');
+}
+
 body {
+  font-family: 'Mono';
   margin: 0;
   background-color: black;
   overflow: hidden;
