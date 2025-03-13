@@ -46,12 +46,13 @@ export const ProjectTitle = styled.p`
 `;
 
 export const Letter = styled.span<{ $letterInName: boolean }>`
-  opacity: 0.8;
+  opacity: 0.7;
 
   ${(props) =>
     props.$letterInName &&
     css`
       opacity: 1;
+      color:;
     `};
 `;
 
