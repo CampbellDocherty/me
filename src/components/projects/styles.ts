@@ -37,7 +37,7 @@ export const ProjectTitle = styled.p`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: default;
   z-index: 1;
 
