@@ -53,7 +53,6 @@ export const Letter = styled.span<{ $letterInName: boolean }>`
     props.$letterInName &&
     css`
       opacity: 1;
-      color: red;
     `};
 `;
 

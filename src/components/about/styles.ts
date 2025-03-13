@@ -73,7 +73,7 @@ export const Header = styled.div`
 
 export const Content = styled.div<{ $isOpen: boolean }>`
   box-sizing: border-box;
-  transition: max-height 1s ease;
+  transition: max-height 0.6s ease;
   max-height: ${(props) => (props.$isOpen ? '100px' : '0px')};
   justify-self: center;
   width: 100%;
