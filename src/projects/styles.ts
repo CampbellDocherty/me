@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Drawer = styled.div`
   height: 100%;
-  width: 10%;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;

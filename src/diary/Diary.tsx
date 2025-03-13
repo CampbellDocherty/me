@@ -1,25 +1,28 @@
+import { useState } from 'react';
 import { styled } from 'styled-components';
 
 const Drawer = styled.div<{ $isOpen: boolean }>`
   height: 100%;
-  width: 20%;
+  width: ${(props) => (props.$isOpen ? '25%' : '10%')};
   border: 1px solid white;
   transition: all 0.3s ease-in-out;
   font-size: 2.5rem;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   position: relative;
+  border-left: ${(props) => (props.$isOpen ? '1px solid white' : 'none')};
 
   &:hover,
   &:focus {
     background-color: white;
     color: black;
     outline: none;
+    width: ${(props) => (props.$isOpen ? '25%' : '15%')};
   }
 
   & > p {
     position: absolute;
-    top: ${(props) => (props.$isOpen ? '20px' : '50%')};
+    top: ${(props) => (props.$isOpen ? '10px' : '50%')};
     right: 20px;
     margin: 0;
     transition:
@@ -29,15 +32,10 @@ const Drawer = styled.div<{ $isOpen: boolean }>`
   }
 `;
 
-export const Diary = ({
-  isOpen,
-  onOpen,
-}: {
-  isOpen: boolean;
-  onOpen: () => void;
-}) => {
+export const Diary = () => {
+  const [diaryOpen, setDiaryOpen] = useState(false);
   return (
-    <Drawer $isOpen={isOpen} onClick={onOpen}>
+    <Drawer $isOpen={diaryOpen} onClick={() => setDiaryOpen(!diaryOpen)}>
       <p>+</p>
     </Drawer>
   );
