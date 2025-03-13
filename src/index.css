@@ -1,3 +1,16 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+body {
+  margin: 0;
+  background-color: black;
+  overflow: hidden;
+}
+
+#root {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
