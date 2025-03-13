@@ -38,7 +38,10 @@ export const Drawer = styled.div<{ $isOpen: boolean }>`
     `}
 `;
 
-export const ProjectTitle = styled.p<{ $isOpen: boolean }>`
+export const ProjectTitle = styled.p<{
+  $isOpen: boolean;
+  $oneLetter: boolean | null;
+}>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,6 +63,15 @@ export const ProjectTitle = styled.p<{ $isOpen: boolean }>`
       transform: translate(0%, -50%);
     `}
 
+  ${(props) =>
+    props.$oneLetter &&
+    css`
+      text-align: start;
+      top: 10px;
+      left: 50%;
+      transform: translate(-50%, -5px);
+    `}
+
   &::selection {
     background-color: transparent;
   }
@@ -72,6 +84,7 @@ export const Letter = styled.span<{ $letterInName: boolean }>`
     props.$letterInName &&
     css`
       opacity: 1;
+      font-weight: 800;
     `};
 `;
 

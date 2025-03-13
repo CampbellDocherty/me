@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Drawer,
   Letter,
@@ -8,19 +8,41 @@ import {
 } from './styles';
 import { Project as ProjectType } from './types';
 
-export const Project = ({ project }: { project: ProjectType }) => {
+export const Project = ({
+  project,
+  onOpen,
+  openProject,
+}: {
+  project: ProjectType;
+  onOpen: (p: ProjectType | null) => void;
+  openProject: ProjectType | null;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const seen = new Set();
 
-  return (
-    <Drawer $isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
-      <ProjectTitle $isOpen={isOpen}>
-        {project.title.split('').map((l, i) => {
-          if (l === ' ') {
-            return <br key={i} />;
-          }
+  useEffect(() => {
+    if (openProject) {
+      if (openProject.id !== project.id && isOpen) {
+        setIsOpen(false);
+      }
+    }
+  }, [openProject]);
 
+  return (
+    <Drawer
+      $isOpen={isOpen}
+      onClick={() => {
+        onOpen(isOpen ? null : project);
+
+        return setIsOpen((prev) => !prev);
+      }}
+    >
+      <ProjectTitle
+        $isOpen={isOpen}
+        $oneLetter={openProject && openProject.id !== project.id}
+      >
+        {project.title.split('').map((l, i) => {
           const letterInName =
             l.toLowerCase() === project.letter && !seen.has(l);
 
@@ -28,6 +50,13 @@ export const Project = ({ project }: { project: ProjectType }) => {
             seen.add(l);
           }
 
+          if (openProject && openProject.id !== project.id && !letterInName) {
+            return null;
+          }
+
+          if (l === ' ') {
+            return <br key={i} />;
+          }
           return (
             <Letter key={i} $letterInName={letterInName}>
               {l}
