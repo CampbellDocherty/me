@@ -1,4 +1,4 @@
-import { ProjectSection } from './Projects';
+import { ProjectSection } from './projects';
 
 const App = () => {
   return <ProjectSection />;
