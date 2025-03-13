@@ -5,7 +5,6 @@ const Drawer = styled.div<{ $isOpen: boolean }>`
   height: 100%;
   width: ${(props) => (props.$isOpen ? '70%' : '10%')};
   border: 1px solid white;
-  transition: all 0.3s ease-in-out;
   font-size: 2.5rem;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -19,10 +18,8 @@ const Drawer = styled.div<{ $isOpen: boolean }>`
 
   &:hover,
   &:focus {
-    background-color: white;
-    color: black;
     outline: none;
-    width: ${(props) => (props.$isOpen ? '70%' : '15%')};
+    width: ${(props) => (props.$isOpen ? '70%' : '11%')};
   }
 `;
 

@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const Section = styled.div`
+export const Section = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -8,7 +8,19 @@ export const Section = styled.div`
   text-align: right;
   border: 1px solid white;
   align-items: flex-end;
-  width: 80%;
+  width: ${(props) => (props.$isOpen ? '70%' : '10%')};
+  position: relative;
+  height: 100%;
+  border-right: ${(props) => (props.$isOpen ? '1px solid white' : 'none')};
+
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    width: ${(props) => (props.$isOpen ? '70%' : '11%')};
+  }
 
   & > p {
     width: 80%;
@@ -81,4 +93,28 @@ export const Content = styled.div<{ $isOpen: boolean }>`
   overflow: hidden;
   flex-direction: column;
   align-items: flex-start;
+`;
+
+export const AboutContent = styled.div<{ $isOpen: boolean }>`
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  transform: ${({ $isOpen }) =>
+    $isOpen ? 'translateY(0)' : 'translateY(-10px)'};
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+`;
+
+export const Icon = styled.p<{ $isOpen: boolean }>`
+  position: absolute;
+  font-size: 2.5rem;
+  top: ${(props) => (props.$isOpen ? '10px' : '50%')};
+  left: 20px;
+  text-align: left;
+  width: fit-content !important;
+  margin: 0;
+  transition:
+    transform 0.3s ease-in-out,
+    top 0.3s ease-in-out;
+  transform: ${(props) => (props.$isOpen ? 'rotate(-45deg)' : 'rotate(0)')};
 `;

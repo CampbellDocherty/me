@@ -9,7 +9,13 @@ export const Wip = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <WipProject key={wip.title} onClick={() => setIsOpen((prev) => !prev)}>
+    <WipProject
+      key={wip.title}
+      onClick={(e) => {
+        e.stopPropagation();
+        return setIsOpen((prev) => !prev);
+      }}
+    >
       <Header>
         <p>{wip.title}</p>
         <p>+</p>

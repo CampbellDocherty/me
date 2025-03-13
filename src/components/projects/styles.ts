@@ -22,7 +22,6 @@ export const Drawer = styled.div`
   &:hover {
     background-color: white;
     color: black;
-    flex: 1.2;
   }
 
   &:focus {
