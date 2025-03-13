@@ -1,37 +1,43 @@
 import { styled } from 'styled-components';
 
-const Drawer = styled.div`
+const Drawer = styled.div<{ $isOpen: boolean }>`
   height: 100%;
-  width: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 40px;
+  width: 20%;
   border: 1px solid white;
   transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  font-size: 2rem;
-  transform: translateX(-50%);
+  font-size: 2.5rem;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  position: relative;
 
-  &:hover {
-    background-color: white;
-    color: black;
-    transform: translateX(-20%);
-  }
-
+  &:hover,
   &:focus {
     background-color: white;
     color: black;
-    transform: translateX(-20%);
     outline: none;
+  }
+
+  & > p {
+    position: absolute;
+    top: ${(props) => (props.$isOpen ? '20px' : '50%')};
+    right: 20px;
+    margin: 0;
+    transition:
+      transform 0.3s ease-in-out,
+      top 0.3s ease-in-out;
+    transform: ${(props) => (props.$isOpen ? 'rotate(45deg)' : 'rotate(0)')};
   }
 `;
 
-export const Diary = () => {
+export const Diary = ({
+  isOpen,
+  onOpen,
+}: {
+  isOpen: boolean;
+  onOpen: () => void;
+}) => {
   return (
-    <Drawer tabIndex={0}>
+    <Drawer $isOpen={isOpen} onClick={onOpen}>
       <p>+</p>
     </Drawer>
   );

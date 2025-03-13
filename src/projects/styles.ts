@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
@@ -44,6 +44,17 @@ export const ProjectTitle = styled.p`
   }
 `;
 
+export const Letter = styled.span<{ $letterInName: boolean }>`
+  opacity: 0.8;
+
+  ${(props) =>
+    props.$letterInName &&
+    css`
+      opacity: 1;
+      color: red;
+    `};
+`;
+
 export const SVGOverlay = styled.svg`
   position: absolute;
   top: 0;
@@ -51,5 +62,4 @@ export const SVGOverlay = styled.svg`
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
 `;

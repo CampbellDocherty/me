@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Coords } from './types';
-import { Container, Drawer, SVGOverlay } from './styles';
 import { Project } from './Project';
 import { projects } from './projects';
+import { Container, SVGOverlay } from './styles';
+import { Coords } from './types';
 
 export const ProjectSection = () => {
   const [positions, setPositions] = useState<Coords>({});

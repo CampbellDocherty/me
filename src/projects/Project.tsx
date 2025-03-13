@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Drawer, ProjectTitle } from './styles';
+import { Drawer, Letter, ProjectTitle } from './styles';
 import { Project as ProjectType } from './types';
 import { useWindowSize } from './useWindowSize';
 
@@ -39,7 +39,13 @@ export const Project = ({
           if (l === ' ') {
             return <br key={i} />;
           }
-          return <span key={i}>{l}</span>;
+
+          const letterInName = l.toLowerCase() === project.letter;
+          return (
+            <Letter key={i} $letterInName={letterInName}>
+              {l}
+            </Letter>
+          );
         })}
       </ProjectTitle>
     </Drawer>
