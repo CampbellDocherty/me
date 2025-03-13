@@ -7,6 +7,7 @@ const Section = styled.div`
   padding-top: 20px;
   padding-right: 20px;
   text-align: right;
+  border: 1px solid white;
 `;
 
 export const About = () => {

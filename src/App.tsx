@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
-import { About } from './about';
-import { Diary } from './diary';
-import { ProjectSection } from './projects';
+import { About } from './components/about';
+import { Diary } from './components/diary';
+import { ProjectSection } from './components/projects';
 
 const Container = styled.div`
   width: 100%;

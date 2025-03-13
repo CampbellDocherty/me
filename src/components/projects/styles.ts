@@ -10,6 +10,7 @@ export const Container = styled.div`
 export const Drawer = styled.div`
   height: 100%;
   flex: 1;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,6 +22,7 @@ export const Drawer = styled.div`
   &:hover {
     background-color: white;
     color: black;
+    flex: 1.2;
   }
 
   &:focus {
