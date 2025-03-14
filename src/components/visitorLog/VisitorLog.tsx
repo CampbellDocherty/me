@@ -52,7 +52,7 @@ const Icon = styled.p<{ $isOpen: boolean }>`
   transform: ${(props) => (props.$isOpen ? 'rotate(45deg)' : 'rotate(0)')};
 `;
 
-export const Diary = ({
+export const VisitorLog = ({
   onOpen,
   openSection,
 }: {
@@ -63,7 +63,7 @@ export const Diary = ({
 
   useEffect(() => {
     if (openSection) {
-      if (openSection !== Sections.DIARY) {
+      if (openSection !== Sections.VISITORS_LOG) {
         setIsOpen(false);
       }
     }
@@ -71,15 +71,15 @@ export const Diary = ({
 
   const handleOpen = () => {
     const newState = !isOpen;
-    if (newState && openSection !== Sections.DIARY) {
-      onOpen(Sections.DIARY);
+    if (newState && openSection !== Sections.VISITORS_LOG) {
+      onOpen(Sections.VISITORS_LOG);
     }
     setIsOpen(newState);
   };
 
   return (
     <Drawer $isOpen={isOpen} onClick={handleOpen}>
-      {isOpen && <Title>Diary</Title>}
+      {isOpen && <Title>Visitor Log</Title>}
       <Icon $isOpen={isOpen}>+</Icon>
     </Drawer>
   );
