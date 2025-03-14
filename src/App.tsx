@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 import { About } from './components/about';
-import { Diary } from './components/diary';
+import { VisitorLog } from './components/visitorLog';
 import { ProjectSection } from './components/projects';
 import { useState } from 'react';
 
@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 export enum Sections {
-  DIARY = 'DIARY',
+  VISITORS_LOG = 'VISITORS_LOG',
   PROJECTS = 'PROJECTS',
   ABOUT = 'ABOUT',
 }
@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <Container>
-      <Diary openSection={openSection} onOpen={onProjectOpen} />
+      <VisitorLog openSection={openSection} onOpen={onProjectOpen} />
       <ProjectSection openSection={openSection} onOpen={onProjectOpen} />
       <About openSection={openSection} onOpen={onProjectOpen} />
     </Container>
