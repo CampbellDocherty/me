@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Drawer = styled.div<{ $isOpen: boolean }>`
   height: 100%;
-  flex: ${(props) => (props.$isOpen ? 20 : 1)};
+  flex: ${(props) => (props.$isOpen ? 10 : 1)};
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -91,20 +91,43 @@ export const Letter = styled.span<{ $letterInName: boolean }>`
 export const ProjectContent = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  gap: 12px;
   justify-content: center;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   transform: ${({ $isOpen }) =>
     $isOpen ? 'translateY(0)' : 'translateY(-10px)'};
   transition:
-    opacity 0.3s ease,
+    opacity 0.1s ease,
     transform 0.3s ease;
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
   height: 100%;
+  max-width: 70%;
 `;
 
-export const SketchPlaceholder = styled.div`
+export const ProjectDescription = styled.div`
+  text-align: left;
+  margin-bottom: 12px;
   width: 100%;
-  height: 80%;
-  border: 1px solid red;
+`;
+
+export const ProjectIcon = styled.img`
+  width: 50px;
+`;
+
+export const ProjectImage = styled.img`
+  width: 100%;
+  object-fit: cover;
+`;
+
+export const ProjectLink = styled.a`
+  text-decoration: none;
+  display: flex;
+  color: white;
+  min-width: 100%;
+  width: 100%;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
