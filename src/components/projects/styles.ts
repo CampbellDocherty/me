@@ -124,7 +124,6 @@ export const ProjectLink = styled.a`
   text-decoration: none;
   display: flex;
   color: white;
-  min-width: 100%;
   width: 100%;
 
   &:hover {

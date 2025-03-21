@@ -76,7 +76,7 @@ export const Project = ({
         <ProjectDescription>{project.description}</ProjectDescription>
         <ProjectImage src={project.img} alt="image" />
         <ProjectLink href={project.link} target="_blank" rel="noreferrer">
-          {'visit the site'}
+          {project.link?.split('www.')[1]}
         </ProjectLink>
       </ProjectContent>
     </Drawer>
