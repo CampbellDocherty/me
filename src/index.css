@@ -20,3 +20,23 @@ body {
   height: 100vh;
   color: white;
 }
+
+input {
+  background-color: black;
+  font-family: 'Mono';
+  outline: none;
+  border: none;
+  border: 1px solid white;
+  padding: 4px;
+  color: white;
+}
+
+button {
+  color: white;
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 4px;
+  background-color: black;
+  font-family: 'Mono';
+  outline: none;
+}
