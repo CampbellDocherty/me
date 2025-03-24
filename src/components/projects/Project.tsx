@@ -1,10 +1,13 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Drawer,
   Letter,
   ProjectContent,
+  ProjectDescription,
+  ProjectIcon,
+  ProjectImage,
+  ProjectLink,
   ProjectTitle,
-  SketchPlaceholder,
 } from './styles';
 import { Project as ProjectType } from './types';
 
@@ -68,8 +71,13 @@ export const Project = ({
         })}
       </ProjectTitle>
       <ProjectContent $isOpen={isOpen}>
-        <p>{project.description}</p>
-        <SketchPlaceholder />
+        <ProjectIcon src={project.icon} alt="icon" />
+
+        <ProjectDescription>{project.description}</ProjectDescription>
+        <ProjectImage src={project.img} alt="image" />
+        <ProjectLink href={project.link} target="_blank" rel="noreferrer">
+          {project.link?.split('www.')[1]}
+        </ProjectLink>
       </ProjectContent>
     </Drawer>
   );

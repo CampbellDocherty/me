@@ -23,8 +23,6 @@ const App = () => {
     setOpenSection(section);
   };
 
-  console.log(openSection);
-
   return (
     <Container>
       <VisitorLog openSection={openSection} onOpen={onProjectOpen} />
