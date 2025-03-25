@@ -6,6 +6,7 @@ import {
   WorkInProgress,
   AboutContent,
   Icon,
+  Name,
 } from './styles';
 import { Wip } from './Wip';
 import { wips } from './wips';
@@ -41,10 +42,12 @@ export const About = ({
   };
 
   return (
-    <Section $isOpen={isOpen} onClick={handleOpen}>
-      <Icon $isOpen={isOpen}>+</Icon>
+    <Section $isOpen={isOpen} onClick={isOpen ? undefined : handleOpen}>
+      <Icon onClick={handleOpen} $isOpen={isOpen}>
+        +
+      </Icon>
       <AboutContent $isOpen={isOpen}>
-        <p>Campbell Docherty</p>
+        <Name>Campbell Docherty</Name>
         <ImageContainer>
           <ImageButton
             $expanded={expanded === then}

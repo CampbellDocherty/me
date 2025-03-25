@@ -3,6 +3,8 @@ import eman from '../../assets/eman.png';
 import fcuk from '../../assets/fcuk.png';
 import star from '../../assets/star.png';
 import waaw from '../../assets/waaw.png';
+import bambi from '../../assets/bambi.png';
+import bambiIcon from '../../assets/bambi-icon.png';
 import nangIcon from '../../assets/nang-icon.png';
 import nang from '../../assets/nang.png';
 import myValentine from '../../assets/my-valentine.png';
@@ -57,11 +59,14 @@ export const projects: ProjectType[] = [
     icon: '',
   },
   {
-    description: 'Some test text before I put the real thing in!',
+    description: 'Portfolio site for London based jeweler, Bambi!',
     id: 5,
     letter: 'e',
-    title: '19 Horses',
-    icon: '',
+    title: 'Jewels by Bam',
+    icon: bambiIcon,
+    img: bambi,
+    link: 'https://jewelsbybam.com',
+    bg: 'salmon',
   },
   {
     description:
