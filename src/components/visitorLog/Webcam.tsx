@@ -8,8 +8,8 @@ import {
 } from 'react';
 import Webcam from 'react-webcam';
 import { keyframes, styled } from 'styled-components';
-import { uploadBase64Image } from '../../firebase';
 import { v4 } from 'uuid';
+import { uploadBase64Image } from '../../firebase';
 
 const fadeIn = keyframes`
   from {

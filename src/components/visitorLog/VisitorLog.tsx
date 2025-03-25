@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { keyframes, styled } from 'styled-components';
 import { Sections } from '../../App';
 import { LogVisitWebcam } from './Webcam';
 import { useGetImages } from './useGetImages';
 
-const Drawer = styled.div<{ $isOpen: boolean }>`
+const Drawer = styled.div<{ $isOpen: boolean; $isEmpty: boolean }>`
   height: 100%;
   width: ${(props) => (props.$isOpen ? '70%' : '10%')};
   border: 1px solid white;
@@ -17,7 +17,8 @@ const Drawer = styled.div<{ $isOpen: boolean }>`
   padding-right: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${(props) =>
+    props.$isEmpty ? 'flex-end' : 'space-between'};
   padding-left: 20px;
   padding-top: 75px;
 
@@ -51,14 +52,13 @@ const ImageContainer = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   width: 80%;
-
   height: 100%;
   overflow-y: scroll;
   box-sizing: border-box;
 `;
 
-const VisitorImage = styled.img<{ $delay: number }>`
-  width: 30%;
+const VisitorImage = styled.img<{ $delay: number; $pulseUserImage: boolean }>`
+  width: ${(props) => (props.$pulseUserImage ? '40%' : '30%')};
   height: auto;
   object-fit: contain;
   animation: ${fadeIn} 1s ease-in-out;
@@ -120,6 +120,18 @@ export const VisitorLog = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggingVisit, setIsLoggingVisit] = useState(false);
+  const [pulseUserImage, setPulseUserImage] = useState(false);
+
+  const { images, isLoading } = useGetImages();
+  const visitors = images && images.length > 0;
+  const previousVisitId = localStorage.getItem('id');
+
+  const previousImage = useMemo(() => {
+    if (!previousVisitId) {
+      return null;
+    }
+    return images?.find((img) => img.src.includes(previousVisitId));
+  }, [images, previousVisitId]);
 
   useEffect(() => {
     if (openSection) {
@@ -143,10 +155,12 @@ export const VisitorLog = ({
     setIsOpen(newState);
   };
 
-  const { images, isLoading } = useGetImages();
-
   return (
-    <Drawer $isOpen={isOpen} onClick={isOpen ? undefined : handleOpen}>
+    <Drawer
+      $isEmpty={!visitors}
+      $isOpen={isOpen}
+      onClick={isOpen ? undefined : handleOpen}
+    >
       <Wrapper>
         {isOpen && isLoggingVisit && (
           <LogVisitWebcam onCapture={() => setIsLoggingVisit(false)} />
@@ -155,7 +169,7 @@ export const VisitorLog = ({
           {isOpen && isLoading ? (
             <p>Loading ...</p>
           ) : (
-            images &&
+            visitors &&
             isOpen &&
             images.map((img, i) => {
               const delay = 50 * i;
@@ -166,14 +180,27 @@ export const VisitorLog = ({
                   alt={img.alt}
                   title={img.alt}
                   $delay={delay}
+                  $pulseUserImage={pulseUserImage}
                 />
               );
             })
           )}
         </ImageContainer>
       </Wrapper>
-      {isOpen && (
+      {isOpen && !previousImage && (
         <Link onClick={() => setIsLoggingVisit(true)}>Log your visit</Link>
+      )}
+      {isOpen && previousImage && (
+        <Link
+          onClick={() => {
+            setPulseUserImage(true);
+            setTimeout(() => {
+              setPulseUserImage(false);
+            }, 2000);
+          }}
+        >
+          Visit logged: {previousImage?.name}
+        </Link>
       )}
       {isOpen && <Title>Visitor Log</Title>}
       <Icon $isOpen={isOpen} onClick={handleOpen}>
