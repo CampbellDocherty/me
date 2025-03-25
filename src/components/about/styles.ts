@@ -14,7 +14,7 @@ export const Section = styled.div<{ $isOpen: boolean }>`
   border-right: ${(props) => (props.$isOpen ? '1px solid white' : 'none')};
 
   transition: all 0.3s ease-in-out;
-  cursor: pointer;
+  cursor: ${(props) => (props.$isOpen ? 'auto' : 'pointer')};
 
   &:hover,
   &:focus {
@@ -108,6 +108,11 @@ export const AboutContent = styled.div<{ $isOpen: boolean }>`
   height: 100%;
 `;
 
+export const Name = styled.p`
+  width: fit-content;
+  align-self: flex-end;
+`;
+
 export const Icon = styled.p<{ $isOpen: boolean }>`
   position: absolute;
   font-size: 2.5rem;
@@ -120,4 +125,6 @@ export const Icon = styled.p<{ $isOpen: boolean }>`
     transform 0.3s ease-in-out,
     top 0.3s ease-in-out;
   transform: ${(props) => (props.$isOpen ? 'rotate(-45deg)' : 'rotate(0)')};
+  cursor: pointer;
+  z-index: 10;
 `;
