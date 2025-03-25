@@ -19,6 +19,7 @@ const Drawer = styled.div<{ $isOpen: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding-left: 20px;
+  padding-top: 75px;
 
   &:hover,
   &:focus {
@@ -37,13 +38,20 @@ const fadeIn = keyframes`
   }
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  height: 100%;
+`;
+
 const ImageContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 80%;
-  padding-top: 100px;
+
   height: 100%;
   overflow-y: scroll;
   box-sizing: border-box;
@@ -135,29 +143,35 @@ export const VisitorLog = ({
     setIsOpen(newState);
   };
 
-  const { images } = useGetImages();
+  const { images, isLoading } = useGetImages();
 
   return (
     <Drawer $isOpen={isOpen} onClick={isOpen ? undefined : handleOpen}>
-      {isOpen && isLoggingVisit && (
-        <LogVisitWebcam onCapture={() => setIsLoggingVisit(false)} />
-      )}
-      {images && isOpen && (
+      <Wrapper>
+        {isOpen && isLoggingVisit && (
+          <LogVisitWebcam onCapture={() => setIsLoggingVisit(false)} />
+        )}
         <ImageContainer>
-          {images.map((img, i) => {
-            const delay = 50 * i;
-            return (
-              <VisitorImage
-                key={`${img.alt} + ${i}`}
-                src={img.src}
-                alt={img.alt}
-                title={img.alt}
-                $delay={delay}
-              />
-            );
-          })}
+          {isOpen && isLoading ? (
+            <p>Loading ...</p>
+          ) : (
+            images &&
+            isOpen &&
+            images.map((img, i) => {
+              const delay = 50 * i;
+              return (
+                <VisitorImage
+                  key={`${img.alt} + ${i}`}
+                  src={img.src}
+                  alt={img.alt}
+                  title={img.alt}
+                  $delay={delay}
+                />
+              );
+            })
+          )}
         </ImageContainer>
-      )}
+      </Wrapper>
       {isOpen && (
         <Link onClick={() => setIsLoggingVisit(true)}>Log your visit</Link>
       )}

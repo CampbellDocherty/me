@@ -1,6 +1,12 @@
 import { Project as ProjectType } from './types';
 import eman from '../../assets/eman.png';
 import fcuk from '../../assets/fcuk.png';
+import star from '../../assets/star.png';
+import waaw from '../../assets/waaw.png';
+import nangIcon from '../../assets/nang-icon.png';
+import nang from '../../assets/nang.png';
+import myValentine from '../../assets/my-valentine.png';
+import myValentineIcon from '../../assets/my-valentine-icon.png';
 
 export const projects: ProjectType[] = [
   {
@@ -12,20 +18,29 @@ export const projects: ProjectType[] = [
     icon: eman,
     img: fcuk,
     link: 'https://www.noformat.world',
+    bg: 'rgb(210, 55, 75)',
   },
   {
-    description: 'Some test text before I put the real thing in!',
+    description:
+      'Portfolio site for London based DJ duo, WAAW. Control a star using the movement of your phone to collect power ups and tracks!',
     id: 1,
     letter: 'a',
-    title: 'Waaw',
-    icon: '',
+    title: 'waaw',
+    icon: star,
+    img: waaw,
+    link: 'https://campbelldocherty.github.io/waaw/',
+    bg: 'rgb(191, 128, 242)',
   },
   {
-    description: 'Some test text before I put the real thing in!',
+    description:
+      'Valentines day website I made for my girlfriend. Click to place memories from our relationship!',
     id: 2,
     letter: 'm',
     title: 'my valentine',
-    icon: '',
+    icon: myValentineIcon,
+    img: myValentine,
+    link: 'https://campbelldocherty.github.io/c-heart-n/',
+    bg: 'rgb(246, 193, 64)',
   },
   {
     description: 'Some test text before I put the real thing in!',
@@ -49,11 +64,15 @@ export const projects: ProjectType[] = [
     icon: '',
   },
   {
-    description: 'Some test text before I put the real thing in!',
+    description:
+      'Pre party website for NANG. Slide the puzzle pieces to complete the image and unlock the party poster.',
     id: 6,
     letter: 'l',
     title: 'Nang land',
-    icon: '',
+    icon: nangIcon,
+    img: nang,
+    link: 'https://campbelldocherty.github.io/NANG/',
+    bg: 'rgb(94, 156, 255)',
   },
   {
     description: 'Some test text before I put the real thing in!',
