@@ -6,6 +6,7 @@ export type Project = {
   icon: string;
   img?: string;
   link?: string;
+  bg?: string;
 };
 export type Coords = {
   [key: number]: { x: number; y: number };

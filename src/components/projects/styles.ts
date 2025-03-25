@@ -7,7 +7,7 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Drawer = styled.div<{ $isOpen: boolean }>`
+export const Drawer = styled.div<{ $isOpen: boolean; $bg: string | undefined }>`
   height: 100%;
   flex: ${(props) => (props.$isOpen ? 10 : 1)};
   box-sizing: border-box;
@@ -21,7 +21,7 @@ export const Drawer = styled.div<{ $isOpen: boolean }>`
 
   &:hover,
   &:focus {
-    background-color: white;
+    background-color: ${(props) => (props.$bg ? props.$bg : 'white')};
     color: black;
     outline: none;
   }
@@ -102,7 +102,7 @@ export const ProjectContent = styled.div<{ $isOpen: boolean }>`
     transform 0.3s ease;
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
   height: 100%;
-  max-width: 70%;
+  max-width: ${({ $isOpen }) => ($isOpen ? '70%' : '0%')};
 `;
 
 export const ProjectDescription = styled.div`

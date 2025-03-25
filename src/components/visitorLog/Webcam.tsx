@@ -1,7 +1,6 @@
 import {
   ChangeEvent,
   FormEvent,
-  Suspense,
   useCallback,
   useEffect,
   useRef,
@@ -32,29 +31,28 @@ const flashOut = keyframes`
   }
 `;
 
-const CanvasContainer = styled.div`
+const Container = styled.div`
   flex-grow: 1;
   animation: ${fadeIn} 1s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   gap: 12px;
+  margin-bottom: 16px;
 `;
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   gap: 12px;
 `;
 
 const WebcamContainer = styled.div`
   position: relative;
   width: 100%;
-  height: fit-content;
+  display: flex;
 `;
 
 const Countdown = styled.p`
@@ -77,8 +75,10 @@ const Flash = styled.div`
 const Form = styled.form`
   animation: ${fadeIn} 1s ease-in-out;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 12px;
 `;
 
@@ -146,12 +146,15 @@ export const LogVisitWebcam = ({ onCapture }: { onCapture: () => void }) => {
   }, [countdown]);
 
   return (
-    <CanvasContainer>
+    <Container>
       <Wrapper>
         <WebcamContainer>
           {countdown && <Countdown>{countdown}</Countdown>}
           {flash && <Flash />}
-          <Webcam ref={webcamRef} style={{ width: '100%' }} />
+          <Webcam
+            ref={webcamRef}
+            style={{ width: '100%', objectFit: 'cover' }}
+          />
         </WebcamContainer>
         <Form onSubmit={handleSubmit}>
           <InputContainer>
@@ -168,6 +171,6 @@ export const LogVisitWebcam = ({ onCapture }: { onCapture: () => void }) => {
           <Button type="submit">Save</Button>
         </Form>
       </Wrapper>
-    </CanvasContainer>
+    </Container>
   );
 };

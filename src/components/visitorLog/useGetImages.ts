@@ -3,6 +3,7 @@ import { getFiles } from '../../firebase';
 
 export const useGetImages = () => {
   const [images, setImages] = useState<HTMLImageElement[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const get = async () => {
@@ -16,12 +17,14 @@ export const useGetImages = () => {
           img.onerror = reject;
         });
       });
-      const imgs = (await Promise.all(images)) as HTMLImageElement[];
+      const promisedImgs = Promise.all(images);
+      const imgs = (await promisedImgs) as HTMLImageElement[];
+      setIsLoading(false);
       setImages(imgs);
     };
 
     get();
   }, []);
 
-  return { images };
+  return { images, isLoading };
 };

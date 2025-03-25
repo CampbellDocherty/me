@@ -1,6 +1,8 @@
 import { Project as ProjectType } from './types';
 import eman from '../../assets/eman.png';
 import fcuk from '../../assets/fcuk.png';
+import star from '../../assets/star.png';
+import waaw from '../../assets/waaw.png';
 
 export const projects: ProjectType[] = [
   {
@@ -12,13 +14,18 @@ export const projects: ProjectType[] = [
     icon: eman,
     img: fcuk,
     link: 'https://www.noformat.world',
+    bg: 'rgb(210, 55, 75)',
   },
   {
-    description: 'Some test text before I put the real thing in!',
+    description:
+      'Portfolio site for London based DJ duo, WAAW. Control a star using the movement of your phone to collect power ups and tracks!',
     id: 1,
     letter: 'a',
-    title: 'Waaw',
-    icon: '',
+    title: 'waaw',
+    icon: star,
+    img: waaw,
+    link: 'https://campbelldocherty.github.io/waaw/',
+    bg: 'rgb(191, 128, 242)',
   },
   {
     description: 'Some test text before I put the real thing in!',

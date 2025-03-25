@@ -38,6 +38,7 @@ export const Project = ({
   return (
     <Drawer
       $isOpen={isOpen}
+      $bg={project.bg}
       onClick={() => {
         onOpen(isOpen ? null : project);
 
@@ -76,7 +77,7 @@ export const Project = ({
         <ProjectDescription>{project.description}</ProjectDescription>
         <ProjectImage src={project.img} alt="image" />
         <ProjectLink href={project.link} target="_blank" rel="noreferrer">
-          {project.link?.split('www.')[1]}
+          {project.link?.split('https://')[1]}
         </ProjectLink>
       </ProjectContent>
     </Drawer>
