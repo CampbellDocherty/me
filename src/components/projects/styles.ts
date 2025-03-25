@@ -102,7 +102,7 @@ export const ProjectContent = styled.div<{ $isOpen: boolean }>`
     transform 0.3s ease;
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
   height: 100%;
-  max-width: ${({ $isOpen }) => ($isOpen ? '70%' : '0%')};
+  max-width: ${({ $isOpen }) => ($isOpen ? '80%' : '0%')};
 `;
 
 export const ProjectDescription = styled.div`
@@ -115,9 +115,10 @@ export const ProjectIcon = styled.img`
   width: 50px;
 `;
 
-export const ProjectImage = styled.img`
+export const ProjectImage = styled.img<{ $borderColor: string }>`
   width: 100%;
   object-fit: cover;
+  border: 2px solid ${(props) => props.$borderColor};
 `;
 
 export const ProjectLink = styled.a`

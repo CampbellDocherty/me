@@ -76,7 +76,11 @@ export const Project = ({
           <ProjectIcon src={project.icon} alt="icon" />
 
           <ProjectDescription>{project.description}</ProjectDescription>
-          <ProjectImage src={project.img} alt="image" />
+          <ProjectImage
+            $borderColor={project.bg || 'black'}
+            src={project.img}
+            alt="image"
+          />
           <ProjectLink href={project.link} target="_blank" rel="noreferrer">
             {project.link?.split('https://')[1]}
           </ProjectLink>
