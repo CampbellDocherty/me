@@ -21,15 +21,18 @@ export const Project = ({
   openProject: ProjectType | null;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
   const seen = new Set();
 
   useEffect(() => {
     if (!openProject && isOpen) {
+      setShowContent(false);
       setIsOpen(false);
     }
     if (openProject) {
       if (openProject.id !== project.id && isOpen) {
+        setShowContent(false);
         setIsOpen(false);
       }
     }
@@ -41,8 +44,16 @@ export const Project = ({
       $bg={project.bg}
       onClick={() => {
         onOpen(isOpen ? null : project);
+        const nextOpenState = !isOpen;
+        if (nextOpenState) {
+          setTimeout(() => {
+            setShowContent(true);
+          }, 300);
+        } else {
+          setShowContent(false);
+        }
 
-        return setIsOpen((prev) => !prev);
+        return setIsOpen(nextOpenState);
       }}
     >
       <ProjectTitle
@@ -71,7 +82,7 @@ export const Project = ({
           );
         })}
       </ProjectTitle>
-      {isOpen && (
+      {showContent && (
         <ProjectContent $isOpen={isOpen}>
           <ProjectIcon src={project.icon} alt="icon" />
 

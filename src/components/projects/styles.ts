@@ -1,4 +1,4 @@
-import { css, styled } from 'styled-components';
+import { css, keyframes, styled } from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
@@ -88,27 +88,34 @@ export const Letter = styled.span<{ $letterInName: boolean }>`
     `};
 `;
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
+
 export const ProjectContent = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   gap: 12px;
   justify-content: center;
-  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
-  transform: ${({ $isOpen }) =>
-    $isOpen ? 'translateY(0)' : 'translateY(-10px)'};
-  transition:
-    opacity 0.1s ease,
-    transform 0.3s ease;
+  animation: ${fadeIn} 0.5s ease-in-out;
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
   height: 100%;
-  max-width: ${({ $isOpen }) => ($isOpen ? '80%' : '0%')};
+  padding-right: 32px;
 `;
 
 export const ProjectDescription = styled.div`
-  text-align: left;
+  text-align: right;
   margin-bottom: 12px;
-  width: 100%;
+  max-width: 80%;
 `;
 
 export const ProjectIcon = styled.img`
@@ -116,7 +123,7 @@ export const ProjectIcon = styled.img`
 `;
 
 export const ProjectImage = styled.img<{ $borderColor: string }>`
-  width: 100%;
+  width: 80%;
   object-fit: cover;
   border: 2px solid ${(props) => props.$borderColor};
 `;
@@ -125,7 +132,6 @@ export const ProjectLink = styled.a`
   text-decoration: none;
   display: flex;
   color: white;
-  width: 100%;
 
   &:hover {
     text-decoration: underline;
