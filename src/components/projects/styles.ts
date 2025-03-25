@@ -106,32 +106,50 @@ export const ProjectContent = styled.div<{ $isOpen: boolean }>`
   align-items: flex-end;
   gap: 12px;
   justify-content: center;
-  animation: ${fadeIn} 0.5s ease-in-out;
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
   height: 100%;
   padding-right: 32px;
+`;
+
+export const ProjectIcon = styled.img`
+  width: 50px;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: ${fadeIn} 0.5s ease-in-out forwards;
+  animation-delay: 0.1s;
 `;
 
 export const ProjectDescription = styled.div`
   text-align: right;
   margin-bottom: 12px;
   max-width: 80%;
-`;
-
-export const ProjectIcon = styled.img`
-  width: 50px;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: ${fadeIn} 0.5s ease-in-out forwards;
+  animation-delay: 0.2s;
 `;
 
 export const ProjectImage = styled.img<{ $borderColor: string }>`
   width: 80%;
   object-fit: cover;
   border: 2px solid ${(props) => props.$borderColor};
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: ${fadeIn} 0.5s ease-in-out forwards;
+  animation-delay: 0.3s;
 `;
 
 export const ProjectLink = styled.a`
   text-decoration: none;
   display: flex;
   color: white;
+  max-width: 80%;
+  word-break: break-all;
+  text-align: right;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: ${fadeIn} 0.5s ease-in-out forwards;
+  animation-delay: 0.4s;
 
   &:hover {
     text-decoration: underline;
