@@ -13,6 +13,7 @@ export const useGetImages = () => {
           const img = new Image();
           img.src = file.downloadUrl;
           img.alt = file.metadata?.customMetadata?.imageName || '';
+          img.name = file.metadata.timeCreated.split('T')[0];
           img.onload = () => resolve(img);
           img.onerror = reject;
         });
