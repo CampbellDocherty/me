@@ -99,6 +99,10 @@ const Link = styled.p`
   }
 `;
 
+const Loading = styled.p`
+  font-size: 16px;
+`;
+
 const Icon = styled.p<{ $isOpen: boolean }>`
   position: absolute;
   top: ${(props) => (props.$isOpen ? '10px' : '50%')};
@@ -167,7 +171,7 @@ export const VisitorLog = ({
         )}
         <ImageContainer>
           {isOpen && isLoading ? (
-            <p>Loading ...</p>
+            <Loading>Loading...</Loading>
           ) : (
             visitors &&
             isOpen &&
